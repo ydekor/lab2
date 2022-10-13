@@ -5,7 +5,18 @@ function sumTime(string $firstTime, string $secondTime): string
     $first = [];
     $second = [];
     $result = [];
+    $nums = ' 0123456789:';
+    foreach (str_split($firstTime) as $tmp) {
+        if (!(strpos($nums, $tmp))) {
+            return 'oshibka';
+        }
+    }
     $first = explode(':', $firstTime);
+    foreach (str_split($secondTime) as $tmp) {
+        if (!(strpos($nums, $tmp))) {
+            return 'oshibka';
+        }
+    }
     $second = explode(':', $secondTime);
     $result[0] = (intval($first[0])) + (intval($second[0]));
     $result[1] = (intval($first[1])) + (intval($second[1]));
@@ -21,8 +32,7 @@ function sumTime(string $firstTime, string $secondTime): string
     if ((intval($result[0])) > 60) {
         $result[0] = (intval($result[0])) - 24;
     }
-    print 'result: ' . $result[0] . ':' . $result[1] . ':' . $result[2];
     return "$result[0]:$result[1]:$result[2]";
 }
 
-sumTime('12:10:10', '10:10:10');
+echo sumTime($argv[1], $argv[2]);
