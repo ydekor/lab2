@@ -2,7 +2,7 @@
 
 function sumTime($firstTime, $secondTime): void
 {
-
+    $result = '';
     $first = explode(':', $firstTime);
     if (!checkCorrectTime($first)) {
         echo "oshibka";
@@ -15,7 +15,7 @@ function sumTime($firstTime, $secondTime): void
 
     if ($sec >= 60) {
         $minute += intval($sec / 60);
-        $tempSecs = $sec % 60;
+        $sec = $sec % 60;
     }
     if ($minute >= 60) {
         $hour += intval($sec / 60);
